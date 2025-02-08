@@ -6,51 +6,275 @@ void main() {
       appBar: AppBar(
         title: Text('Study to Container'),
       ),
-      body: CustomContainer(),
+      body: Bodys(),
     ),
   ));
 }
 
-class CustomContainer extends StatelessWidget {
-  const CustomContainer({super.key});
+/*
+// 컬럼 좌우 조절
+class Bodys extends StatelessWidget {
+  const Bodys({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100,
-      height: 100,
-      padding: EdgeInsets.fromLTRB(10, 12, 10, 12),
-      decoration: BoxDecoration(
-          // boxDecoration 사용시에는 container 밖에 color 옵션 쓰면 에러발생
-          color: Colors.amber,
-          border: Border.all(
+      height: double.infinity,
+      width: double.infinity,
+      color: Colors.blueGrey,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.center, // 컬럼 중앙정렬
+        crossAxisAlignment: CrossAxisAlignment.start, // 컬럼 왼쪽 정렬
+        children: [
+          Container(
+            width: 100,
+            height: 80,
             color: Colors.red,
-            width: 5,
-            style: BorderStyle.solid,
+            child: Center(
+              child: Text('컨테이너1'),
+            ),
           ),
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color:Colors.grey.withOpacity(0.3),
-              offset: Offset(5, 1),
-              blurRadius: 10,
-              spreadRadius: 10
+          Container(
+            width: 100,
+            height: 80,
+            color: Colors.amber,
+            child: Center(
+              child: Text('컨테이너2'),
             ),
-            BoxShadow(
-                color:Colors.pink.withOpacity(0.3),
-                offset: Offset(-10, -10),
-                blurRadius: 10,
-                spreadRadius: 10
+          ),
+          Container(
+            width: 100,
+            height: 80,
+            color: Colors.greenAccent,
+            child: Center(
+              child: Text('컨테이너3'),
             ),
-          ]),
-      margin: EdgeInsets.symmetric(
-        vertical: 12,
-        horizontal: 10,
+          ),
+        ],
       ),
-      child: Center(
-        child: Container(
-          color: Colors.blueAccent,
-          child: Text('하이요'),
+    );
+  }
+}
+
+ */
+
+// 컬럼 상하 조절
+class Bodys extends StatelessWidget {
+  const Bodys({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: double.infinity,
+      width: double.infinity,
+      color: Colors.blueGrey,
+      child: SingleChildScrollView( // 스크롤기능
+        scrollDirection: Axis.vertical, // 스크롤 시 수직 or 수평으로 스크롤
+        child: Column(
+          children: [
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.end, // Row 맨 오른쪽으로정렬
+              crossAxisAlignment: CrossAxisAlignment.center, // Row 가운데 정렬
+              children: [
+                Container(
+                  width: 100,
+                  height: 80,
+                  color: Colors.red,
+                  margin: EdgeInsets.symmetric(
+                    vertical: 30,
+                  ),
+                  child: Center(
+                    child: Text('컨테이너1'),
+                  ),
+                ),
+                Container(
+                  width: 100,
+                  height: 80,
+                  color: Colors.amber,
+                  child: Center(
+                    child: Text('컨테이너2'),
+                  ),
+                ),
+                Container(
+                  width: 100,
+                  height: 80,
+                  color: Colors.greenAccent,
+                  child: Center(
+                    child: Text('컨테이너3'),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start, // Row 맨 오른쪽으로정렬
+              crossAxisAlignment: CrossAxisAlignment.center, // Row 가운데 정렬
+              children: [
+                Container(
+                  width: 100,
+                  height: 80,
+                  color: Colors.red,
+                  child: Center(
+                    child: Text('컨테이너4'),
+                  ),
+                ),
+                Container(
+                  width: 100,
+                  height: 80,
+                  color: Colors.amber,
+                  child: Center(
+                    child: Text('컨테이너5'),
+                  ),
+                ),
+                Container(
+                  width: 100,
+                  height: 80,
+                  color: Colors.greenAccent,
+                  child: Center(
+                    child: Text('컨테이너6'),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center, // Row 맨 오른쪽으로정렬
+              crossAxisAlignment: CrossAxisAlignment.center, // Row 가운데 정렬
+              children: [
+                Container(
+                  width: 200,
+                  height: 100,
+                  color: Colors.red,
+                  margin: EdgeInsets.symmetric(
+                    vertical: 30,
+                  ),
+                  child: Center(
+                    child: Text('컨테이너7'),
+                  ),
+                ),
+                Container(
+                  width: 100,
+                  height: 80,
+                  color: Colors.amber,
+                  child: Center(
+                    child: Text('컨테이너8'),
+                  ),
+                ),
+                Container(
+                  width: 100,
+                  height: 80,
+                  color: Colors.greenAccent,
+                  child: Center(
+                    child: Text('컨테이너9'),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center, // Row 맨 오른쪽으로정렬
+              crossAxisAlignment: CrossAxisAlignment.center, // Row 가운데 정렬
+              children: [
+                Container(
+                  width: 200,
+                  height: 100,
+                  color: Colors.red,
+                  margin: EdgeInsets.symmetric(
+                    vertical: 30,
+                  ),
+                  child: Center(
+                    child: Text('컨테이너7'),
+                  ),
+                ),
+                Container(
+                  width: 100,
+                  height: 80,
+                  color: Colors.amber,
+                  child: Center(
+                    child: Text('컨테이너8'),
+                  ),
+                ),
+                Container(
+                  width: 100,
+                  height: 80,
+                  color: Colors.greenAccent,
+                  child: Center(
+                    child: Text('컨테이너9'),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center, // Row 맨 오른쪽으로정렬
+              crossAxisAlignment: CrossAxisAlignment.center, // Row 가운데 정렬
+              children: [
+                Container(
+                  width: 200,
+                  height: 100,
+                  color: Colors.red,
+                  margin: EdgeInsets.symmetric(
+                    vertical: 30,
+                  ),
+                  child: Center(
+                    child: Text('컨테이너7'),
+                  ),
+                ),
+                Container(
+                  width: 100,
+                  height: 80,
+                  color: Colors.amber,
+                  child: Center(
+                    child: Text('컨테이너8'),
+                  ),
+                ),
+                Container(
+                  width: 100,
+                  height: 80,
+                  color: Colors.greenAccent,
+                  child: Center(
+                    child: Text('컨테이너9'),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center, // Row 맨 오른쪽으로정렬
+              crossAxisAlignment: CrossAxisAlignment.center, // Row 가운데 정렬
+              children: [
+                Container(
+                  width: 200,
+                  height: 100,
+                  color: Colors.red,
+                  margin: EdgeInsets.symmetric(
+                    vertical: 30,
+                  ),
+                  child: Center(
+                    child: Text('컨테이너7'),
+                  ),
+                ),
+                Container(
+                  width: 100,
+                  height: 80,
+                  color: Colors.amber,
+                  child: Center(
+                    child: Text('컨테이너8'),
+                  ),
+                ),
+                Container(
+                  width: 100,
+                  height: 80,
+                  color: Colors.greenAccent,
+                  child: Center(
+                    child: Text('컨테이너9'),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
