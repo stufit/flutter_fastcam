@@ -16,42 +16,40 @@ class Bodys extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Stack(
       children: [
         Container(
-          width: double.infinity,
-          height: 200,
-          color: Colors.deepPurpleAccent,
+          width: 500,
+          height: 500,
+          color: Colors.black,
         ),
-        Expanded(
+        Container(
+          width: 500,
+          height: 400,
+          color: Colors.red,
+        ),
+        Container(
+          width: 500,
+          height: 300,
+          color: Colors.amber,
+        ),
+        // Positioned(
+        //   bottom: 5,
+        //   right: 30,
+        //   child: Container(
+        //     width: 200,
+        //     height: 200,
+        //     color: Colors.greenAccent,
+        //   ),
+        // ),
+        Align(
+          alignment: Alignment(0.5,0.7),
           child: Container(
-            color: Colors.greenAccent,
+            width: 100,
+            height: 100,
+            color: Colors.pink,
           ),
-        ),
-        Flexible(
-          flex: 1,
-          child: Container(
-            color: Colors.red,
-          ),
-        ),
-        Flexible(
-          flex: 2,
-          child: Container(
-            color: Colors.blue,
-          ),
-        ),
-        Flexible(
-          flex: 2,
-          child: Container(
-            color: Colors.green,
-          ),
-        ),
-        Flexible(
-          flex: 2,
-          child: Container(
-            color: Colors.amber,
-          ),
-        ),
+        )
       ],
     );
   }
