@@ -4,9 +4,9 @@ void main() {
   runApp(MaterialApp(
     home: Scaffold(
       appBar: AppBar(
-        title: Text('Study to Container'),
+        title: const Text('Study to Container'),
       ),
-      body: Bodys(),
+      body: const Bodys(),
     ),
   ));
 }
@@ -16,41 +16,66 @@ class Bodys extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return TestWidget();
+  }
+}
+
+class TestWidget extends StatefulWidget {
+  const TestWidget({super.key});
+
+  @override
+  State<TestWidget> createState() => _TestWidgetState();
+}
+
+class _TestWidgetState extends State<TestWidget> {
+  int value = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
-          width: 500,
-          height: 500,
-          color: Colors.black,
+        Text(
+          'Count: $value',
+          style: const TextStyle(fontSize: 30),
         ),
-        Container(
-          width: 500,
-          height: 400,
-          color: Colors.red,
-        ),
-        Container(
-          width: 500,
-          height: 300,
-          color: Colors.amber,
-        ),
-        // Positioned(
-        //   bottom: 5,
-        //   right: 30,
-        //   child: Container(
-        //     width: 200,
-        //     height: 200,
-        //     color: Colors.greenAccent,
-        //   ),
-        // ),
-        Align(
-          alignment: Alignment(0.5,0.7),
-          child: Container(
-            width: 100,
-            height: 100,
-            color: Colors.pink,
-          ),
-        )
+        TestButton(addCounter),
       ],
+    );
+  }
+
+  void addCounter() {
+    setState(() {
+      value++;
+    });
+  }
+}
+
+class TestButton extends StatelessWidget {
+  const TestButton(this.callback,{super.key});
+
+  final VoidCallback callback;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(10),
+      width: double.infinity,
+      child: InkWell(
+        onTap: ()=>callback.call(),
+        child: Center(
+          child: Container(
+            padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+            decoration: BoxDecoration(
+              border: Border.all(),
+            ),
+            child: const Text(
+              'up counter',
+              style: TextStyle(fontSize: 24),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
